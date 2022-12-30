@@ -1,0 +1,91 @@
+/**
+
+ */
+
+
+/* DEFAULT THEME */
+
+.cm-s-codewars .cm-header {color: blue;}
+.cm-s-codewars .cm-quote {color: #090;}
+.cm-negative {color: #d44;}
+.cm-positive {color: #292;}
+.cm-header, .cm-strong {font-weight: bold;}
+.cm-em {font-style: italic;}
+.cm-link {text-decoration: underline;}
+.cm-strikethrough {text-decoration: line-through;}
+
+.cm-s-codewars .cm-keyword {color: #708;}
+.cm-s-codewars .cm-atom {color: #219;}
+.cm-s-codewars .cm-number {color: #164;}
+.cm-s-codewars .cm-def {color: #00f;}
+.cm-s-codewars .cm-variable,
+.cm-s-codewars .cm-punctuation,
+.cm-s-codewars .cm-property,
+.cm-s-codewars .cm-operator {}
+.cm-s-codewars .cm-variable-2 {color: #05a;}
+.cm-s-codewars .cm-variable-3, .cm-s-codewars .cm-type {color: #085;}
+.cm-s-codewars .cm-comment {color: #a50;}
+.cm-s-codewars .cm-string {color: #a11;}
+.cm-s-codewars .cm-string-2 {color: #f50;}
+.cm-s-codewars .cm-meta {color: #555;}
+.cm-s-codewars .cm-qualifier {color: #555;}
+.cm-s-codewars .cm-builtin {color: #30a;}
+.cm-s-codewars .cm-bracket {color: #997;}
+.cm-s-codewars .cm-tag {color: #170;}
+.cm-s-codewars .cm-attribute {color: #00c;}
+.cm-s-codewars .cm-hr {color: #999;}
+.cm-s-codewars .cm-link {color: #00c;}
+
+.cm-s-codewars .cm-error {color: #f00;}
+.cm-invalidchar {color: #f00;}
+
+/* codewars */
+
+.dark .cm-s-codewars  { font-family: Consolas, Menlo, Monaco, 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', monospace, serif;}
+.dark .cm-s-codewars.CodeMirror { background: #2B2B2B; color: #A9B7C6; }
+
+.dark .cm-s-codewars span.cm-meta { color: #BBB529; }
+.dark .cm-s-codewars span.cm-number { color: #6897BB; }
+.dark .cm-s-codewars span.cm-keyword { color: #CC7832; line-height: 1em; font-weight: bold; }
+.dark .cm-s-codewars span.cm-def { color: #A9B7C6; font-style: italic; }
+.dark .cm-s-codewars span.cm-variable { color: #A9B7C6; }
+.dark .cm-s-codewars span.cm-variable-2 { color: #A9B7C6; }
+.dark .cm-s-codewars span.cm-variable-3 { color: #9876AA; }
+.dark .cm-s-codewars span.cm-type { color: #AABBCC; font-weight: bold; }
+.dark .cm-s-codewars span.cm-property { color: #FFC66D; }
+.dark .cm-s-codewars span.cm-operator { color: #A9B7C6; }
+.dark .cm-s-codewars span.dark .cm-string { color: #6A8759; }
+.dark .cm-s-codewars span.dark .cm-string-2 { color: #6A8759; }
+.dark .cm-s-codewars span.cm-comment { color: #61A151; font-style: italic; }
+.dark .cm-s-codewars span.cm-link { color: #CC7832; }
+.dark .cm-s-codewars span.cm-atom { color: #CC7832; }
+.dark .cm-s-codewars span.cm-error { color: #BC3F3C; }
+.dark .cm-s-codewars span.cm-tag { color: #629755; font-weight: bold; font-style: italic; text-decoration: underline; }
+.dark .cm-s-codewars span.cm-attribute { color: #6897bb; }
+.dark .cm-s-codewars span.cm-qualifier { color: #6A8759; }
+.dark .cm-s-codewars span.cm-bracket { color: #A9B7C6; }
+.dark .cm-s-codewars span.cm-builtin { color: #FF9E59; }
+.dark .cm-s-codewars span.dark .cm-special { color: #FF9E59; }
+.dark .cm-s-codewars span.cm-matchhighlight { color: #FFFFFF; background-color: rgba(50, 89, 48, .7); font-weight: normal;}
+.dark .cm-s-codewars span.dark .cm-searching { color: #FFFFFF; background-color: rgba(61, 115, 59, .7); font-weight: normal;}
+
+.dark .cm-s-codewars .CodeMirror-cursor { border-left: 1px solid #A9B7C6; }
+.dark .cm-s-codewars .CodeMirror-activeline-background { background: #323232; }
+.dark .cm-s-codewars .CodeMirror-gutters { background: #313335; border-right: 1px solid #313335; }
+.dark .cm-s-codewars .CodeMirror-guttermarker { color: #FFEE80; }
+.dark .cm-s-codewars .CodeMirror-guttermarker-subtle { color: #D0D0D0; }
+.dark .cm-s-codewars .CodeMirrir-linenumber { color: #606366; }
+.dark .cm-s-codewars .CodeMirror-matchingbracket { background-color: #3B514D; color: #FFEF28 !important; font-weight: bold; }
+
+.dark .cm-s-codewars div.CodeMirror-selected { background: #214283; }
+
+.dark .CodeMirror-hints.codewars {
+  font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+  color: #9C9E9E;
+  background-color: #3B3E3F !important;
+}
+
+.dark .CodeMirror-hints.codewars .CodeMirror-hint-active {
+  background-color: #494D4E !important;
+  color: #9C9E9E !important;
+}
