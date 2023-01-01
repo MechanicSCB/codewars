@@ -16,7 +16,10 @@ class JavascriptScriptGenerator extends LangScriptGenerator
 
         foreach ($this->attempts as $attempt){
             $attemptString = $this->getAttemptString($attempt);
-            $scriptCode .= "console.log(JSON.stringify($attemptString))\n";
+            //$scriptCode .= "console.log(JSON.stringify($attemptString))\n";
+            // Fix TypeError: Do not know how to serialize a BigInt
+            // but return string instead number
+            $scriptCode .= "console.log(JSON.stringify($attemptString, (_, v) => typeof v === 'bigint' ? v.toString() : v))\n";
             $scriptCode .= "console.log('$this->separator');\n";
         }
 

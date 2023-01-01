@@ -7,7 +7,8 @@ services:
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
-        image: sail-8.1/app
+        #image: sail-8.1/app
+        image: kolekulyanov/sail-8.1 # password docker-kolek-ulyanov@yandex
         extra_hosts:
             - 'host.docker.internal:host-gateway'
         ports:
@@ -69,7 +70,8 @@ services:
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
-        image: sail-runner:1.2
+#        image: sail-runner:1.2
+        image: kolekulyanov/sail-runner:1.2 # password docker-kolek-ulyanov@yandex
         extra_hosts:
             - 'host.docker.internal:host-gateway'
         ports:

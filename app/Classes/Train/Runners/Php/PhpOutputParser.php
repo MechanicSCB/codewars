@@ -10,6 +10,8 @@ class PhpOutputParser extends LangOutputParser
 {
     public function parseRawOutput(string $rawOutput): array
     {
+        $rawOutput = str_replace('\\\n', '\n', $rawOutput);
+
         // If error returned
         if(str_starts_with($rawOutput,'<!DOCTYPE html>')){
             $rawOutput = $this->parseRawOutputErrors($rawOutput);

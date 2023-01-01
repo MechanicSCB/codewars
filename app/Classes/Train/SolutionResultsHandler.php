@@ -155,7 +155,13 @@ class SolutionResultsHandler
 
         // compare array ignore types
         if(is_array($expected)){
-            $comparison = $result == $expected;
+            //$comparison = $result === $expected;
+            if(is_array($result)){
+                sort($result);
+            }
+
+            sort($expected);
+            $comparison = json_encode($result) === json_encode($expected);
         }else{
             $comparison = $result === $expected;
         }
