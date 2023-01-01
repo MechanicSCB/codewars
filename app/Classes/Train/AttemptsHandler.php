@@ -39,9 +39,6 @@ class AttemptsHandler
 
             foreach ($randomArgsSets as $randomArgsSet) {
                 foreach ($randomArgsSet['args'] as $args) {
-                    // TODO ???
-                    $args =str_replace('\n', "\n", $args);
-
                     $item['type'] = 'random';
                     $functionName = $randomArgsSet['function_name'] ?? $funcNamesList[0];
                     $item['name'] = $functionName;
