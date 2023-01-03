@@ -18,27 +18,15 @@ class TestController extends Controller
         // $faker = \Faker\Factory::create();
         function getRandomArguments()
         {
-            $faker = \Faker\Factory::create();
-            $words = [];
+            $arr = [];
 
-            for ($i = 0; $i < rand(3, 99); $i++) {
-                $word = $faker->word;
-                $words[] = $word;
-
-                if (! rand(0, 4)) {
-                    $words[] = $word;
-                }
-
-                if (! rand(0, 4)) {
-                    $words[] = $word;
+            for($i=0; $i<rand(1,9);$i++){
+                for ($k=0; $k<8;$k++){
+                    $arr[] = rand(0,1);
                 }
             }
 
-            shuffle($words);
-
-            $str = implode(' ', $words);
-
-            return [$str];
+            return [$arr];
         }
 
         df(tmr(@$this->start), getRandomArguments());
