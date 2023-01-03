@@ -18,122 +18,27 @@ class TestController extends Controller
         // $faker = \Faker\Factory::create();
         function getRandomArguments()
         {
-            $width = mt_rand(20, 30);
-            $height = mt_rand(20, 30);
+            $faker = \Faker\Factory::create();
+            $words = [];
 
-            $matrix = [];
-            for ($y = 0; $y < $height; $y++) {
-                $matrix[$y] = str_repeat(' ', $width);
+            for ($i = 0; $i < rand(3, 99); $i++) {
+                $word = $faker->word;
+                $words[] = $word;
+
+                if (! rand(0, 4)) {
+                    $words[] = $word;
+                }
+
+                if (! rand(0, 4)) {
+                    $words[] = $word;
+                }
             }
 
-            $p1 = [
-                'start' => ['x' => 0, 'y' => 0],
-                'end' => ['x' => 0, 'y' => 0],
-            ];
-            $p2 = [
-                'start' => ['x' => 0, 'y' => 0],
-                'end' => ['x' => 0, 'y' => 0],
-            ];
+            shuffle($words);
 
-            $p1['start']['x'] = mt_rand(0, $width - 5);
-            $p1['start']['y'] = mt_rand(0, $height - 5);
-            $p1['end']['x'] = mt_rand($p1['start']['x'] + 2, $width - 1);
-            $p1['end']['y'] = mt_rand($p1['start']['y'] + 2, $height - 1);
+            $str = implode(' ', $words);
 
-            do {
-                $p2['start']['x'] = mt_rand(0, $width - 5);
-                $p2['start']['y'] = mt_rand(0, $height - 5);
-                $p2['end']['x'] = mt_rand($p2['start']['x'] + 2, $width - 1);
-                $p2['end']['y'] = mt_rand($p2['start']['y'] + 2, $height - 1);
-                $valid = true;
-                if (abs($p1['start']['x'] - $p2['start']['x']) === 1) {
-                    $valid = false;
-                }
-                if (abs($p1['start']['x'] - $p2['end']['x']) === 1) {
-                    $valid = false;
-                }
-                if (abs($p1['end']['x'] - $p2['start']['x']) === 1) {
-                    $valid = false;
-                }
-                if (abs($p1['end']['x'] - $p2['end']['x']) === 1) {
-                    $valid = false;
-                }
-
-                if (abs($p1['start']['y'] - $p2['start']['y']) === 1) {
-                    $valid = false;
-                }
-                if (abs($p1['start']['y'] - $p2['end']['y']) === 1) {
-                    $valid = false;
-                }
-                if (abs($p1['end']['y'] - $p2['start']['y']) === 1) {
-                    $valid = false;
-                }
-                if (abs($p1['end']['y'] - $p2['end']['y']) === 1) {
-                    $valid = false;
-                }
-
-                if (
-                    $p2['start']['x'] > $p1['start']['x'] && $p2['end']['x'] < $p1['end']['x'] &&
-                    $p2['start']['y'] > $p1['start']['y'] && $p2['end']['y'] < $p1['end']['y']
-                ) {
-                    $valid = false;
-                }
-                if (
-                    $p1['start']['x'] > $p2['start']['x'] && $p1['end']['x'] < $p2['end']['x'] &&
-                    $p1['start']['y'] > $p2['start']['y'] && $p1['end']['y'] < $p2['end']['y']
-                ) {
-                    $valid = false;
-                }
-            } while (! $valid);
-
-
-            foreach ([$p1, $p2] as $p) {
-                $minX = $p['start']['x'];
-                $maxX = $p['end']['x'];
-                $minY = $p['start']['y'];
-                $maxY = $p['end']['y'];
-
-                // Top line
-                $matrix[$minY][$minX] = '+';
-                for ($x = $minX + 1; $x < $maxX; $x++) {
-                    if ($matrix[$minY][$x] !== '+') {
-                        $matrix[$minY][$x] = $matrix[$minY][$x] === '|' ? '+' : '-';
-                    }
-                }
-                $matrix[$minY][$maxX] = '+';
-
-                // Bottom line
-                $matrix[$maxY][$minX] = '+';
-                for ($x = $minX + 1; $x < $maxX; $x++) {
-                    if ($matrix[$maxY][$x] !== '+') {
-                        $matrix[$maxY][$x] = $matrix[$maxY][$x] === '|' ? '+' : '-';
-                    }
-                }
-                $matrix[$maxY][$maxX] = '+';
-
-                // Left line
-                $matrix[$minY][$minX] = '+';
-                for ($y = $minY + 1; $y < $maxY; $y++) {
-                    if ($matrix[$y][$minX] !== '+') {
-                        $matrix[$y][$minX] = $matrix[$y][$minX] === '-' ? '+' : '|';
-                    }
-                }
-                $matrix[$maxY][$minX] = '+';
-
-                // Right line
-                $matrix[$minY][$maxX] = '+';
-                for ($y = $minY + 1; $y < $maxY; $y++) {
-                    if ($matrix[$y][$maxX] !== '+') {
-                        $matrix[$y][$maxX] = $matrix[$y][$maxX] === '-' ? '+' : '|';
-                    }
-                }
-                $matrix[$maxY][$maxX] = '+';
-            }
-
-            $res = implode("\n", $matrix);
-            $res = stripslashes($res);
-
-            return [$res];
+            return [$str];
         }
 
         df(tmr(@$this->start), getRandomArguments());

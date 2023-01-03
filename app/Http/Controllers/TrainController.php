@@ -20,7 +20,7 @@ class TrainController extends Controller
         $preload = (new KataHandler())->getPreload($kata);
         $attemptsResults = [];
 
-        //return inertia('Katas/TrainMod', compact('kata', 'langs', 'initLang', 'attemptsResults', 'preload'));
+        return inertia('Katas/TrainMod', compact('kata', 'langs', 'initLang', 'attemptsResults', 'preload'));
         return inertia('Katas/Train', compact('kata', 'langs', 'initLang', 'attemptsResults', 'preload'));
     }
 
@@ -33,7 +33,7 @@ class TrainController extends Controller
         $langs = $this->getLangs($kata);
         $preload = (new KataHandler())->getPreload($kata);
 
-        //return inertia('Katas/TrainMod', compact('kata', 'langs', 'attemptsResults', 'preload'));
+        return inertia('Katas/TrainMod', compact('kata', 'langs', 'attemptsResults', 'preload'));
         return inertia('Katas/Train', compact('kata', 'langs', 'attemptsResults', 'preload'));
     }
 

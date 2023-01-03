@@ -54,10 +54,22 @@ services:
             - UPLOAD_LIMIT=300M
         networks:
             - sail
+#    docker-manager:
+#        build:
+#            context: .
+#        image: kolekulyanov/apache-docker
+#        environment:
+#            - APACHE_RUN_USER=#1000
+#        volumes:
+#            - ./runners/docker-manager/app:/var/www/html
+#            - /var/run/docker.sock:/var/run/docker.sock
+#        ports:
+##            - ${DOCKER_MANGER_PORT:-8082}:80
+#            - 8082:80
     apache-runner:
         build:
             context: ./runners/apache-runner/
-        image: apache-runner
+        image: kolekulyanov/apache-runner # password docker-kolek-ulyanov@yandex
         environment:
             - APACHE_RUN_USER=#1000
         ports:
@@ -70,7 +82,6 @@ services:
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
-#        image: sail-runner:1.2
         image: kolekulyanov/sail-runner:1.2 # password docker-kolek-ulyanov@yandex
         extra_hosts:
             - 'host.docker.internal:host-gateway'

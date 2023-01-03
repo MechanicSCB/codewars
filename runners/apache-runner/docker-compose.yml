@@ -1,12 +1,12 @@
 version: '3'
 services:
-    crystal-apache:
+    apache-runner:
         build:
             context: .
-        image: apache-runner
+        image: kolekulyanov/apache-runner
         environment:
             - APACHE_RUN_USER=#1000
-        volumes:
-            - ./app:/var/www/html/
+#        volumes:
+#            - ./app:/var/www/html/
         ports:
             - 5099:80

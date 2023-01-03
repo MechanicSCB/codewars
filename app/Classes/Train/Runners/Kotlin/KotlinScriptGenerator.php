@@ -16,7 +16,8 @@ class KotlinScriptGenerator extends LangScriptGenerator
         foreach ($this->attempts as $attempt) {
             $attemptString = $this->getAttemptString($attempt);
             // TODO ref
-            $attemptString = str_replace(['[', ']'], ['intArrayOf(', ')'], $attemptString);
+            $attemptString = str_replace(['[', ']'], ['arrayOf(', ')'], $attemptString);
+            //$attemptString = str_replace(['[', ']'], ['intArrayOf(', ')'], $attemptString);
             //$attemptString = str_replace(['[', ']'], ['listOf(', ')'], $attemptString);
             $script .= "\tprintln({$attemptString})\n";
             $script .= "\tprintln(\"$this->separator\")\n";

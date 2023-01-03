@@ -55,6 +55,10 @@ abstract class LangOutputParser
 
     protected function convertItem(mixed $item, int $itemKey)
     {
+        if($item === 'null'){
+            $item = null;
+        }
+
         if($item === 'True'){
             $item = 'true';
         }
@@ -67,6 +71,7 @@ abstract class LangOutputParser
 
         if(
             $decoded === null
+            && $item !== null
             //&& is_string(@$this->attempts[$itemKey]['expected'])
         ) {
             $decoded = json_decode("\"$item\"", 1) ?? $item;

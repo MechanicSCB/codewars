@@ -1,0 +1,13 @@
+version: '3'
+services:
+    docker-manger:
+        build:
+            context: .
+        image: kolekulyanov/apache-docker
+        environment:
+            - APACHE_RUN_USER=#1000
+        volumes:
+            - ./app:/var/www/html/
+            - /var/run/docker.sock:/var/run/docker.sock
+        ports:
+            - 80:80

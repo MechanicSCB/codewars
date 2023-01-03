@@ -18,6 +18,7 @@ class GoScriptGenerator extends LangScriptGenerator
             $attemptString = $this->getAttemptString($attempt);
             // TODO ref to get argument type
             $attemptString = str_replace([']', '['], ['}', '[]int{'], $attemptString);
+            //$attemptString = str_replace([']', '['], ['}', '[]string{'], $attemptString);
 
             $script .= "\tj$key, err := json.Marshal($attemptString)
             if err != nil {
