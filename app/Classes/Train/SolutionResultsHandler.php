@@ -23,6 +23,9 @@ class SolutionResultsHandler
 
     public function getResults(): array
     {
+        //$this->attempts = array_slice($this->attempts, 10,1);
+        //df(tmr(@$this->start), $this->attempts);
+
         // get expected list
         $expectedList = $this->getAttemptsExpected();
 
@@ -53,7 +56,7 @@ class SolutionResultsHandler
             $expectedEvalList = json_decode($this->kata->sample['expected_list'] ?? "[]", 1);
         }
 
-        return $expectedEvalList;
+        return stdToArray($expectedEvalList);
     }
 
     protected function getSolutionAttemptsResults(array $expectedList, array $solutionEvalList, float $start): array
@@ -116,6 +119,10 @@ class SolutionResultsHandler
 
     protected function getFunctionString(int $key): string
     {
+        if(! @$this->attempts[$key]){
+            return '';
+        }
+
         $functionName = $this->attempts[$key]['name'];
         $args = $this->attempts[$key]['args'];
         $argsString = substr(json_encode($args), 1, -1);
@@ -143,6 +150,10 @@ class SolutionResultsHandler
 
     private function getComparison(mixed $result, mixed $expected): bool
     {
+        if(is_object($result)){
+            $result = stdToArray($result);
+        }
+
         // 1.0 => 1 --- convert float without decimals to integer
         if (is_int($expected) && is_float($result) && intval($result) == $result) {
             $result = (int)$result;
@@ -155,12 +166,16 @@ class SolutionResultsHandler
 
         // compare array ignore types
         if(is_array($expected)){
-            //$comparison = $result === $expected;
-            if(is_array($result)){
-                sort($result);
+            // TODO sort assoc arrays before comparison?
+            if(range( 0, count($expected) -1 ) !== array_keys( $expected )){
+                //$comparison = $result === $expected;
+                if(is_array($result)){
+                    ksort($result);
+                }
+
+                ksort($expected);
             }
 
-            sort($expected);
             $comparison = json_encode($result) === json_encode($expected);
         }else{
             $comparison = $result === $expected;

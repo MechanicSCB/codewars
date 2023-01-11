@@ -175,4 +175,19 @@ class SolutionHandler
 
         df(tmr(@$this->start), 'checkFunctionNames');
     }
+
+    public function replaceSlashedNInSolutionsBody()
+    {
+        $solutions = Solution::query()
+            ->where('kata_id', '56fcc393c5957c666900024d')
+            //->whereRelation('lang', 'slug', 'clojure')
+            ->get(['id','body'])
+        ;
+
+        foreach ($solutions as $solution){
+            $solution->body = str_replace(["\n".'"', "\n"."'"],['\n"','\n'."'"], $solution->body);
+            $solution->save();
+        }
+
+    }
 }

@@ -19,7 +19,6 @@ abstract class LangOutputParser
 
     public function parseRawOutput(string $rawOutput): array
     {
-        //df(tmr(@$this->start), $rawOutput);
         if(! $shellOutput = json_decode($rawOutput)){
             return [$rawOutput];
         }
@@ -33,8 +32,6 @@ abstract class LangOutputParser
             unset($output[count($output) - 1]);
         }
 
-        //df(tmr(@$this->start), $output);
-
         foreach ($output as $itemKey => &$item) {
             // skip ERROR to json (return null) decoding
             if (! str_contains($shellOutput, $this->separator)) {
@@ -43,7 +40,6 @@ abstract class LangOutputParser
 
             $item = $this->convertItem($item, $itemKey);
         }
-
 
         return $output;
     }

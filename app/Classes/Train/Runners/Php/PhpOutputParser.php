@@ -26,7 +26,9 @@ class PhpOutputParser extends LangOutputParser
             return [$rawOutput];
         }
 
-        return json_decode(substr($rawOutput,1,-1));
+        $output = json_decode(substr($rawOutput,1,-1));
+
+        return $output;
     }
 
     protected function parseRawOutputErrors(string $errorOutput):string

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 
 use App\Classes\ReverseSeeder;
 use App\Classes\Trash\BreakPieces;
+use App\Classes\Trash\KataSolver;
+use App\Models\Kata;
 use App\Models\Lang;
 use App\Models\Solution;
 use Faker\Factory;
@@ -15,19 +17,16 @@ class TestController extends Controller
 {
     public function test()
     {
+        $res = (new KataSolver())->solve();
+
+        df(tmr(@$this->start), $res);
+        //
         // $faker = \Faker\Factory::create();
         function getRandomArguments()
         {
-            $arr = [];
-
-            for($i=0; $i<rand(1,9);$i++){
-                for ($k=0; $k<8;$k++){
-                    $arr[] = rand(0,1);
-                }
-            }
-
-            return [$arr];
+            return [array_map(function () {return random_int(-100, 100);}, range(1, $n = random_int(5, 20))), array_map(function () {return random_int(-100, 100);}, range(1, $n))];
         }
+
 
         df(tmr(@$this->start), getRandomArguments());
 
@@ -61,6 +60,82 @@ class TestController extends Controller
 
         df(tmr(@$this->start), 'test');
         //file_put_contents(base_path("database/data/json/samples.json"), Sample::get()->toJson());
+    }
+
+    public function kata_test()
+    {
+        $formula = 'H12M(R23Ta34R)T11Yzz89';
+        //$formula = 'B2H6';
+        $formula = "{[Co(NH3)4(OH)2]3Co}(SO4)3";
+
+
+        function parse_molecule($formula)
+        {
+            $formula = str_replace(['[', ']', '{', '}'], ['(', ')'], $formula);
+
+            $simple = get_simpler($formula);
+            df($simple);
+
+            return parse_simple($formula);
+        }
+
+        function get_simpler($formula)
+        {
+            [$head, $tail] = explode('(', $formula, 2);
+
+            $cnt = 0;
+
+            for ($i = 0; $i < strlen($tail); $i++) {
+                $chr = $tail[$i];
+
+                if ($chr === '(') {
+                    $cnt++;
+                }
+
+
+            }
+
+        }
+
+        function parse_simple($formula)
+        {
+            $atoms = [];
+            $atom = '';
+
+            for ($i = 0; $i < strlen($formula); $i++) {
+                $chr = $formula[$i];
+                $ord = ord($chr);
+
+                if ($ord >= 65 && $ord <= 90) {
+                    if ($atom) {
+                        $atoms[$atom] = $num ?? 1;
+                        $num = 1;
+                    }
+
+                    $atom = $chr; // A - Z
+                } elseif ($ord >= 97 && $ord <= 122) {
+                    $atom .= $chr; // a - z
+                } elseif ($ord >= 48 && $ord <= 57) {
+                    $num = +$chr; // 0 - 9
+
+                    if ($next = @$formula[$i + 1]) {
+                        if (ord($next) >= 48 && ord($next) <= 57) {
+                            $num = +"$num$next";
+                            $i++;
+                        }
+                    }
+                }
+
+            }
+
+            $atoms[$atom] = $num ?? 1;
+
+            return $atoms;
+        }
+
+        $res = parse_molecule($formula);
+        df(tmr(@$this->start), $res);
+
     }
 
     public function test2()
