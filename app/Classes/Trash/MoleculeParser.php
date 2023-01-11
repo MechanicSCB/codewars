@@ -15,18 +15,24 @@ class MoleculeParser
     public function run()
     {
         $formula = $this->formula;
-        //$formula = "(C5H5)Fe(CO)2CH3";
-        //$formula = "H2O(C(5F)e(Fe(CO)2CH3)H5)12Fe(CO)2CH3";
+
 
         $parts = $this->getParts($formula);
 
-        foreach ($parts as $key => $part){
-            if(str_contains($part['val'], '(')){
-                $subParts = $this->getParts($part['val']);
-                $subParts = array_map(fn($v) => ['val' => $v['val'],'num' => $v['num']*$part['num']],$subParts);
-                unset($parts[$key]);
-                $parts = [...$parts, ...$subParts];
+        while (str_contains(json_encode($parts), '(')){
+            $keysToDel = [];
+
+            foreach ($parts as $key => $part){
+                if(str_contains($part['val'], '(')){
+                    $subParts = $this->getParts($part['val']);
+                    $subParts = array_map(fn($v) => ['val' => $v['val'],'num' => $v['num']*$part['num']],$subParts);
+                    //unset($parts[$key]);
+                    $keysToDel[] = $key;
+                    $parts = [...$parts, ...$subParts];
+                }
             }
+
+            $parts = array_values(array_filter($parts, fn($k) => ! in_array($k, $keysToDel), ARRAY_FILTER_USE_KEY));
         }
 
         foreach ($parts as $key => $part) {
@@ -131,6 +137,7 @@ class MoleculeParser
         }
 
         $parts = array_filter($parts, fn($v) => $v['val']);
+        $parts = array_values($parts);
 
         return $parts;
     }
