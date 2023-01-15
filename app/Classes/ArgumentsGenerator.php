@@ -27,7 +27,7 @@ class ArgumentsGenerator
         $count ??= 10;
         $testsRandomArgs = [];
 
-        if ($randomTest->is_function) {
+        if ($randomTest->is_function && $randomTest->code !== null) {
             $testsRandomArgs = $this->generateFromFunction($scheme[0]['lang'] ?? 'php', $randomTest['code'], $count);
         } else {
             while ($count--) {

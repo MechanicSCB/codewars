@@ -23,9 +23,6 @@ class SolutionResultsHandler
 
     public function getResults(): array
     {
-        //$this->attempts = array_slice($this->attempts, 10,1);
-        //df(tmr(@$this->start), $this->attempts);
-
         // get expected list
         $expectedList = $this->getAttemptsExpected();
 

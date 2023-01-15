@@ -33,7 +33,7 @@ class PythonScriptGenerator extends LangScriptGenerator
     protected function getArgsString(array $attempt): string
     {
         $stringArgs = parent::getArgsString($attempt);
-        $stringArgs = str_replace(['true', 'false'], ['True', 'False'], $stringArgs);
+        $stringArgs = str_replace(['true', 'false','null'], ['True', 'False','None'], $stringArgs);
 
         return $stringArgs;
     }

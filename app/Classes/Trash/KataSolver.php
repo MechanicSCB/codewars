@@ -6,69 +6,216 @@ namespace App\Classes\Trash;
 
 class KataSolver
 {
-    //function parse_molecule($formula){
-    //    return (new MoleculeParser($formula))->run();
-    //}
-
     public function solve()
     {
-        $input = "Al(((MgCaArPAlPO)7(ClNUqnUubCaArBNO)23S(ClUunAlUqnSLiAlUubBeUuo)5(UtnUHeFeUUtnFeUup)24Be(UupPUupArSCHCl)15)9(MgFUqn(UunKCaNeHCSi)20F(NLiUubSBUun)6Uuo)14Fe(P(HeUuoHeUUunO)14(NeFeBeBUbnUuoUubNe)20(CKSiNeUuoUBeNaUupCa)23(SiSUuoKFeUunS)3(UtnUupUuuUtnUqnCCaBBSi)3PUuu(NeClOLiFFClLiK)12(UqnBUuuUuoUbnBKUtnLi)6)6((FeFeArNClNeSi)7(LiKFeCLiUuoUunNAlNe)8(BeFUqnUtnP)20Mg(HHeUupArUUbnCBCCa)16(UqnUUClSiKUubKCaUup)19(FFCaBBCa)19)3UubUun((FeNUtnPCaAr)4UuoArUqnUun)10F(U(OKBeHeUBHeUqnNUqn)21(ArFOUupUtnFeNBe)2Ubn(OSUubUAr)19Uun)16)21(C(NCl(FNUunArFUubUqnLiSN)23K(UbnClClCAlFeBNe)4(CUtnKBeMg)21)13MgH((SUbnUbnUubUubUqn)13(UqnArBUupUubOPNaSi)23(ClFBeKUunOOMg)2UuoSiBe(KSHeArUuuBe)22(HBUtnSBeHSiH)17H)11(Uub(MgUUunFeKNCUuoUtnUup)18(UubBeLiKUunNaUuuClUtn)17CB)10AlNa)14UupB(H((ArNaUqnNePSiSiUbnBeUbn)21(UbnOHKFeClCa)3(AlUuuHUuuSiBeUuuCa)10Ar(NeBPHBeCaOK)10SiS(SiUuuUubUupLi)15)22((SiSiClUuoKONeUup)13Uup(UunClCPSBNaUuuHe)6Ar(HeCaUuuLiMgCaUbnO)22(HeUupUuuLiUbnFHUbn)24(BeUtnClClLiSCl)12B)13(UqnCl(NaMgCSiUqnCF)18(BNaUunAlKClHF)19Al(UCKCAlHFe)5(CaUqnSiUbnMg)3UunAr(NaNFeMgNeNa)9)4NaBNa(Utn(NaFNaKUuu)4(FeBUuuSMgFOK)21Uqn(ArOArCaSN)20(MgLiUuuPLiCaUbnUuoNe)4)16)18(SiUub((ArAlOUuoFeO)7Uuu(UunUuuSKUbn)14(PLiNUupFFUun)25UbnUqnCaHeAr)25((ClULiUupFLi)5(LiNUuuClUup)19(HPBArNePCa)3Ubn(UqnAlKUubOH)10(UuuArUqnFeMgNa)3)21(B(BUuuHeAlHLiFUuu)3U(FBePPUup)3(UqnMgKUupUtnClCa)17)17)22((UtnUuuNPMg(PUubUubCaNeUupSiUunSSi)4H(BUqnLiNaBeB)12Uuo)7NeBeU((FeUFCUuoUuuUqnBe)12(OUupUtnFSiClOB)8BeUupUbn(UtnUbnLiUuoUNaUubPCa)11C(OCUUtnKC)19)23(P(HeAlUupHeUtnU)4UbnNLi(BMgAlUuoClUub)25)15Cl((UupSiUunBUSiNeUtnCl)19(ClUuuUuuBeUqnUtnUun)14(UuuNaUbnNeNeUubAlNaNaC)2(NeOFUuoUupUubUuu)25ClNe(BNHeUunSUqnKCl)9MgP)15((HUupClUuuN)15N(ArUubKUuuClKSiOP)17(ArNUunNaMgSiPUunUqnNa)18(PSNUuuUuoClSC)5Uun)24)19";
-        $exp = "{\"Al\":28647,\"Mg\":46347,\"Ca\":60430,\"Ar\":72846,\"P\":69255,\"O\":94854,\"Cl\":89826,\"N\":80748,\"Uqn\":77934,\"Uub\":70455,\"B\":66093,\"S\":56840,\"Uun\":74864,\"Li\":70837,\"Be\":59662,\"Uuo\":47701,\"Utn\":61434,\"U\":61404,\"He\":45257,\"Fe\":36861,\"Uup\":94557,\"C\":51588,\"H\":48316,\"F\":80038,\"K\":96146,\"Ne\":50023,\"Si\":83382,\"Ubn\":59731,\"Na\":50769,\"Uuu\":103950}";
-        $act = "{\"Al\":166909,\"Uup\":513616,\"B\":197681,\"F\":445861,\"Na\":154809,\"Ar\":208246,\"O\":313801,\"Utn\":190008,\"Fe\":83866,\"N\":379460,\"Be\":116443,\"Ubn\":206180,\"Cl\":474018,\"C\":92243,\"Ne\":178262,\"S\":196168,\"Uub\":250807,\"Uqn\":261782,\"P\":285823,\"Si\":246038,\"K\":346723,\"Uun\":412226,\"Mg\":209550,\"Uuo\":177259,\"He\":114620,\"Uuu\":517490,\"H\":179694,\"U\":112052,\"Li\":406957,\"Ca\":160059}";
-        $exp = json_decode($exp,1);
+        //df(tmr(@$this->start), 777);
+        $inputs = [[163, 3, [50, 55, 56, 57, 58]], [163, 3, [50]], [230, 3, [91, 74, 73, 85, 73, 81, 87]], [331, 2, [91, 74, 73, 85, 73, 81, 87]], [331, 4, [91, 74, 73, 85, 73, 81, 87]], [331, 5, [91, 74, 73, 85, 73, 81, 87]], [331, 1, [91, 74, 73, 85, 73, 81, 87]], [700, 6, [91, 74, 73, 85, 73, 81, 87]], [230, 4, [100, 76, 56, 44, 89, 73, 68, 56, 64, 123, 2333, 144, 50, 132, 123, 34, 89]], [430, 5, [100, 76, 56, 44, 89, 73, 68, 56, 64, 123, 2333, 144, 50, 132, 123, 34, 89]], [430, 8, [100, 76, 56, 44, 89, 73, 68, 56, 64, 123, 2333, 144, 50, 132, 123, 34, 89]], [880, 8, [100, 76, 56, 44, 89, 73, 68, 56, 64, 123, 2333, 144, 50, 132, 123, 34, 89]], [2430, 15, [100, 76, 56, 44, 89, 73, 68, 56, 64, 123, 2333, 144, 50, 132, 123, 34, 89]], [100, 2, [100, 76, 56, 44, 89, 73, 68, 56, 64, 123, 2333, 144, 50, 132, 123, 34, 89]], [276, 3, [100, 76, 56, 44, 89, 73, 68, 56, 64, 123, 2333, 144, 50, 132, 123, 34, 89]], [3760, 17, [100, 76, 56, 44, 89, 73, 68, 56, 64, 123, 2333, 144, 50, 132, 123, 34, 89]], [3760, 40, [100, 76, 56, 44, 89, 73, 68, 56, 64, 123, 2333, 144, 50, 132, 123, 34, 89]], [50, 1, [100, 76, 56, 44, 89, 73, 68, 56, 64, 123, 2333, 144, 50, 132, 123, 34, 89]], [1000, 18, [100, 76, 56, 44, 89, 73, 68, 56, 64, 123, 2333, 144, 50, 132, 123, 34, 89]], [230, 4, [100, 64, 123, 2333, 144, 50, 132, 123, 34, 89]], [230, 2, [100, 64, 123, 2333, 144, 50, 132, 123, 34, 89]], [2333, 1, [100, 64, 123, 2333, 144, 50, 132, 123, 34, 89]], [2333, 8, [100, 64, 123, 2333, 144, 50, 132, 123, 34, 89]], [2300, 4, [1000, 640, 1230, 2333, 1440, 500, 1320, 1230, 340, 890, 732, 1346]], [2300, 5, [1000, 640, 1230, 2333, 1440, 500, 1320, 1230, 340, 890, 732, 1346]], [2332, 3, [1000, 640, 1230, 2333, 1440, 500, 1320, 1230, 340, 890, 732, 1346]], [23331, 8, [1000, 640, 1230, 2333, 1440, 500, 1320, 1230, 340, 890, 732, 1346]], [331, 2, [1000, 640, 1230, 2333, 1440, 500, 1320, 1230, 340, 890, 732, 1346]]];
+        $outputs = [163, -1, 228, 178, 331, -1, 91, 491, 230, 430, -1, 876, 1287, 100, 276, 3654, -1, 50, -1, -1, 223, 2333, 825, 2212, -1, 2326, 10789, -1];
+        // 11, 12, 15
+        $n = 0;
+        $input = $inputs[$n];
+        //sort($input[2]);
+        //df(tmr(@$this->start),$input[2]);
 
-        $input = "H2O";
-        //$input = "((Mg)7(Cl))23S((Mg)7(Cl))23S";
-        $input = "((Mg))((A)7)";
-        $exp = $this->parse_molecule($input);
-        $return = (new MoleculeParser($input))->run();
-        ksort($exp);
-        ksort($return);
-        $assert = json_encode($exp) === json_encode($return);
-        df(tmr(@$this->start),$assert, $exp,$return);
+        $res = $this->choose_best_sum(...$input);
+        $output = $outputs[$n];
+        $assert = $res === $output;
+
+        df(tmr(@$this->start), $assert, $input, $output, $res);
+
     }
 
-    function parse_molecule(string $formula): array
+    function choose_best_sum($limit, $cnt, $distances): int
     {
-        $molecule = '('.$formula.')';
-        do {
-            $molecule = preg_replace_callback('/[\(\[\{](\w+)[\)\]\}](\d+)?/', function ($matches) {
-                return $this->parseBrackets($matches[1], $matches[2] ?? 1);
-            }, $molecule, -1, $count);
-        } while ($count);
+        sort($distances);
 
-        $atoms = [];
-        preg_match_all('/([A-Z][a-z]*)(\d+)?/', $molecule, $matches, PREG_SET_ORDER);
-        foreach ($matches as $match) {
-            $atom = $match[1];
-            $atoms[$atom] =  ($atoms[$atom] ?? 0) + $match[2];
+        return $this->choose_best_sum_rec($limit, $cnt, $distances);
+
+    }
+
+    // return integer (sum of elements)
+    function choose_best_sum3($limit, $cnt, $distances): int
+    {
+        if ($cnt === 0) {
+            return 0;
         }
-        return $atoms;
+
+        $res = -1;
+
+        foreach ($distances as $key => $distance) {
+            if ($distance > $limit) {
+                continue;
+            }
+
+            $tmp = $this->choose_best_sum3($limit - $distance, $cnt - 1, array_slice($distances, $key + 1));
+
+            if ($tmp !== -1) {
+                $nr = $distance + $tmp;
+
+                if ($nr > $res && $nr <= $limit) {
+                    $res = $nr;
+                }
+            }
+        }
+
+        return $res;
     }
 
-    function parseBrackets($string, $multiply)
+
+    // return integer (sum of elements) with memoization
+    function choose_best_sum_rec($limit, $cnt, $distances, &$memo = []): int
     {
-        return preg_replace_callback('/([A-Z][a-z]*)(\d+)?/', function ($matches) use ($multiply) {
-            return $matches[1].($matches[2] ?? 1)*$multiply;
-        }, $string);
+        if(count($memo) > 13){
+            df(tmr(@$this->start), $limit, $cnt, $distances, $memo);
+        }
+
+        $mKey = "$limit," . implode(',', $distances);
+
+        if (isset($memo[$mKey])) {
+            return $memo[$mKey];
+        }
+
+        if (count($distances) < $cnt) {
+            $memo[$mKey] = -1;
+
+            return -1;
+        }
+
+        // если мимимальная сумма $cnt элементов больше $limit return -1
+        if (array_sum(array_slice($distances, 0, $cnt)) > $limit) {
+            $memo[$mKey] = -1;
+
+            return -1;
+        }
+
+        $distances = array_filter($distances, fn($v) => $v <= $limit);
+
+        if (count($distances) === 0) {
+            $memo[$mKey] = 0;
+
+            return 0;
+        }
+
+        if ($cnt === 1) {
+            $memo[$mKey] = max($distances);
+
+            return max($distances);
+        }
+
+        $max = 0;
+
+        $cnt--;
+
+        foreach ($distances as $key => $distance) {
+            $rest = $distances;
+            unset($rest[$key]);
+            $rest = array_values($rest);
+
+            $tmp = $this->choose_best_sum_rec($limit - $distance, $cnt, $rest, $memo);
+
+            if ($tmp > 0) {
+                $tmp += $distance;
+            }
+
+            if ($tmp > $max) {
+                $max = $tmp;
+            }
+
+        }
+
+        $memo[$mKey] = $max;
+
+        return $max;
     }
 
-    public function solveOrig()
+    // return integer (sum of elements)
+    function choose_best_sum2($limit, $cnt, $distances): int
     {
-        $inputs = [["H2O"], ["Mg(OH)2"], ["K4[ON(SO3)2]2"], ["B2H6"], ["C6H12O6"], ["Mo(CO)6"], ["Fe(C5H5)2"], ["(C5H5)Fe(CO)2CH3"], ["Pd[P(C6H5)3]4"], ["As2{Be4C5[BCo3(CO2)3]2}4Cu5"], ["{[Co(NH3)4(OH)2]3Co}(SO4)3"], ["C2H2(COOH)2"]];
-        $outputs = "[{\"H\": 2, \"O\": 1}, {\"H\": 2, \"O\": 2, \"Mg\": 1}, {\"K\": 4, \"N\": 2, \"O\": 14, \"S\": 4}, {\"B\": 2, \"H\": 6}, {\"C\": 6, \"H\": 12, \"O\": 6}, {\"C\": 6, \"O\": 6, \"Mo\": 1}, {\"C\": 10, \"H\": 10, \"Fe\": 1}, {\"C\": 8, \"H\": 8, \"O\": 2, \"Fe\": 1}, {\"C\": 72, \"H\": 60, \"P\": 4, \"Pd\": 1}, {\"B\": 8, \"C\": 44, \"O\": 48, \"As\": 2, \"Be\": 16, \"Co\": 24, \"Cu\": 5}, {\"H\": 42, \"N\": 12, \"O\": 18, \"S\": 3, \"Co\": 4}, {\"C\": 4, \"H\": 4, \"O\": 4}]";
-        $outputs = json_decode($outputs, 1);
+        if (count($distances) < $cnt) {
+            return -1;
+        }
 
-        $n = 10;
-        $formula = $inputs[$n][0];
+        // если мимимальная сумма $cnt элементов больше $limit return -1
+        if (array_sum(array_slice($distances, 0, $cnt)) > $limit) {
+            return -1;
+        }
 
-        $return = (new MoleculeParser($formula))->run();
+        $distances = array_filter($distances, fn($v) => $v <= $limit);
 
-        ksort($return);
-        ksort($outputs[$n]);
-        $assert = json_encode($return) === json_encode($outputs[$n]);
-        df(tmr(@$this->start), $assert, $inputs[$n], $return, $outputs[$n]);
+        if (count($distances) === 0) {
+            return 0;
+        }
+
+        if ($cnt === 1) {
+            return max($distances);
+        }
+
+        $max = 0;
+
+        $cnt--;
+
+        foreach ($distances as $key => $distance) {
+            $rest = $distances;
+            unset($rest[$key]);
+            $rest = array_values($rest);
+
+            $tmp = $this->choose_best_sum2($limit - $distance, $cnt, $rest);
+
+            if ($tmp > 0) {
+                $tmp += $distance;
+            }
+
+            if ($tmp > $max) {
+                $max = $tmp;
+            }
+        }
+
+        return $max;
     }
 
+    // return array of distances
+    function choose_best_sum1($limit, $cnt, $distances)
+    {
+        $distances = array_filter($distances, fn($v) => $v <= $limit);
 
+        if (count($distances) === 0 || count($distances) < $cnt) {
+            return [];
+        }
+
+        if ($cnt === 1) {
+            return [max($distances)];
+        }
+
+        $carry = [];
+
+        $cnt--;
+
+        foreach ($distances as $key => $distance) {
+            $rest = $distances;
+            unset($rest[$key]);
+            $rest = array_values($rest);
+
+
+            $tmp = $this->choose_best_sum1($limit - $distance, $cnt, $rest);
+
+            if (count($tmp) === $cnt) {
+                $tmp = [$distance, ...$tmp];
+            }
+
+            if (array_sum($tmp) > array_sum($carry)) {
+                if ($cnt === 7 && $key > 0) {
+                    //df(tmr(@$this->start), $distances, $key, $distance, $rest, $carry, $tmp);
+                }
+
+                $carry = $tmp;
+            }
+        }
+
+        //if ($cnt ===7) {
+        //    df(tmr(@$this->start), $distances, $rest, $carry, $tmp);
+        //}
+
+
+        return $carry;
+    }
 }
