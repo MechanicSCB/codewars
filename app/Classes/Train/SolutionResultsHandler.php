@@ -147,6 +147,7 @@ class SolutionResultsHandler
 
     private function getComparison(mixed $result, mixed $expected): bool
     {
+        //df(tmr(@$this->start), $result, $expected);
         if(is_object($result)){
             $result = stdToArray($result);
         }
@@ -154,6 +155,12 @@ class SolutionResultsHandler
         // 1.0 => 1 --- convert float without decimals to integer
         if (is_int($expected) && is_float($result) && intval($result) == $result) {
             $result = (int)$result;
+        }
+
+        // round float number
+        if (is_float($expected) && is_float($result)) {
+            $result = round($result, 9);
+            $expected = round($expected, 9);
         }
 
         // If expected string and result number convert number to string

@@ -25,8 +25,16 @@ class TestController extends Controller
         // $faker = \Faker\Factory::create();
         function getRandomArguments()
         {
-            return [array_map(function () {return random_int(-100, 100);}, range(1, $n = random_int(5, 20))), array_map(function () {return random_int(-100, 100);}, range(1, $n))];
+            $x = rand(-100, 100); $x1 = rand(-100,100); $x2 = rand(-100,100); $x3 = rand(-100,100);
+            $y = rand(-100,100); $y1 = rand(-100,100); $y2 = rand(-100,100); $y3 = rand(-100,100);
+            $z = rand(-100,100); $z1 = rand(-100,100); $z2 = rand(-100,100); $z3 = rand(-100,100);
+            $eq1 = [$x1, $y1, $z1, ($x1*$x+$y1*$y+$z1*$z)];
+            $eq2 = [$x2, $y2, $z2, ($x2*$x+$y2*$y+$z2*$z)];
+            $eq3 = [$x3, $y3, $z3, ($x3*$x+$y3*$y+$z3*$z)];
+
+            return [[$eq1, $eq2, $eq3]];
         }
+
 
         df(tmr(@$this->start), getRandomArguments());
     }

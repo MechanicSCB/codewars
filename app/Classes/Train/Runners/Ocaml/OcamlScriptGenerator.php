@@ -47,6 +47,8 @@ class OcamlScriptGenerator extends LangScriptGenerator
                     $printCommand = 'print_string';
                 }elseif ($returnType === 'integer'){
                     $printCommand = 'print_int';
+                }elseif ($returnType === 'double'){
+                    $printCommand = 'print_float';
                 }elseif ($returnType === 'boolean'){
                     $printCommand = "printf \"%b \"";
                 }else{

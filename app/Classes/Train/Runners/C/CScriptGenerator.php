@@ -51,7 +51,7 @@ class CScriptGenerator extends LangScriptGenerator
                     $indexedArg .= "[]";
                 }
 
-                if(! @$attemptArgsStrings[$argKey]){
+                if(@$attemptArgsStrings[$argKey] === null){
                     continue;
                 }
 
