@@ -22,17 +22,16 @@ class SampleController extends Controller
     // Dev
     public function showTestCases(): View
     {
+        $kataId = '5a331ea7ee1aae8f24000175';
         $langSlug = 'javascript';
         //$langSlug = 'ruby';
         //$langSlug = 'python';
-        //$testCases = json_decode(file_get_contents(base_path("database/data/json/test_cases.json")), 1);
+        //$langSlug = 'php';
         $testCases = json_decode(file_get_contents(base_path("_backups/codewars_data/parsed_test_cases/$langSlug.json")), 1);
-        //$testCases = array_slice($testCases, 0, 200);
-        $testCases = [
-            '52dc4688eca89d0f820004c6' => @$testCases['52dc4688eca89d0f820004c6'],
-        ];
 
-        //df(tmr(@$this->start), $testCases);
+        $testCases = [
+            $kataId => @$testCases[$kataId],
+        ];
 
         return view('test', compact('testCases'));
     }
