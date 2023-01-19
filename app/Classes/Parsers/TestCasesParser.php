@@ -1136,7 +1136,7 @@ class TestCasesParser
 
     public function parseKataTestsHtml(string $kataId, string $langSlug): ?string
     {
-        $filepath = base_path("database/data/html/solutions/$langSlug/$kataId.html");
+        $filepath = base_path("_backups/codewars_data/katas_1_2_htmls/$langSlug/$kataId.html");
 
         if (! file_exists($filepath)) {
             return null;

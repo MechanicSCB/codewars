@@ -23,19 +23,16 @@ class SampleController extends Controller
     public function showTestCases(): View
     {
         $langSlug = 'javascript';
-        $langSlug = 'ruby';
-        $langSlug = 'python';
+        //$langSlug = 'ruby';
+        //$langSlug = 'python';
         //$testCases = json_decode(file_get_contents(base_path("database/data/json/test_cases.json")), 1);
-        $testCases = json_decode(file_get_contents(base_path("database/data/json/parsed_test_cases/$langSlug.json")), 1);
+        $testCases = json_decode(file_get_contents(base_path("_backups/codewars_data/parsed_test_cases/$langSlug.json")), 1);
         //$testCases = array_slice($testCases, 0, 200);
         $testCases = [
-            '5671d975d81d6c1c87000022' => @$testCases['5671d975d81d6c1c87000022'],
-            '5679d5a3f2272011d700000d' => @$testCases['5679d5a3f2272011d700000d'],
-            '5917a2205ffc30ec3a0000a8' => @$testCases['5917a2205ffc30ec3a0000a8'],
+            '52dc4688eca89d0f820004c6' => @$testCases['52dc4688eca89d0f820004c6'],
         ];
 
         //df(tmr(@$this->start), $testCases);
-
 
         return view('test', compact('testCases'));
     }

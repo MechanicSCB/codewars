@@ -21,7 +21,7 @@ onMounted(() => {
             document.body.clientHeight, document.documentElement.clientHeight,
         );
 
-        let bottomOfWindow = window.pageYOffset + window.innerHeight === scrollHeight;
+        let bottomOfWindow = window.pageYOffset + window.innerHeight >= scrollHeight-1;
 
         // TODO stop loading when all katas are loaded
         if (bottomOfWindow) {
