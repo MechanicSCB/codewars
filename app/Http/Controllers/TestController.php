@@ -22,10 +22,8 @@ class TestController extends Controller
     public function test()
     {
 
-        //[[1,69,95,70]], [[0,49,40,99]], [[37,61,92,36]], [[51,24,75,57]], [[92,59,88,11]]]
-        //(new SolutionHandler())->replaceSlashedNInSolutionsBody();
-        //df(tmr(@$this->start), 878);
-
+        (new ReverseSeeder())->run();
+        df(tmr(@$this->start), 'rev');
 
         $res = (new KataSolver())->solve();
 
