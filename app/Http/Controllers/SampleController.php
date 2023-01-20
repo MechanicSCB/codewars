@@ -22,7 +22,7 @@ class SampleController extends Controller
     // Dev
     public function showTestCases(): View
     {
-        $kataId = '5a331ea7ee1aae8f24000175';
+        $kataId = '5aaa1aa8fd577723a3000049';
         $langSlug = 'javascript';
         //$langSlug = 'ruby';
         //$langSlug = 'python';

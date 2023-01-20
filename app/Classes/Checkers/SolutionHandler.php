@@ -179,8 +179,8 @@ class SolutionHandler
     public function replaceSlashedNInSolutionsBody()
     {
         $solutions = Solution::query()
-            ->where('kata_id', '56fcc393c5957c666900024d')
-            //->whereRelation('lang', 'slug', 'clojure')
+            ->where('kata_id', '586214e1ef065414220000a8')
+            //->whereRelation('lang', 'slug', 'coffeescript')
             ->get(['id','body'])
         ;
 

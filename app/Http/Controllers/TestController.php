@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Classes\Checkers\SolutionHandler;
 use App\Classes\Parsers\TestCasesParser;
 use App\Classes\ReverseSeeder;
 use App\Classes\Trash\BreakPieces;
@@ -20,26 +21,10 @@ class TestController extends Controller
 {
     public function test()
     {
-        ////$langs = File::files(base_path("_backups/codewars_data/parsed_test_cases"));
-        //$langs = scandir(base_path("_backups/codewars_data/parsed_test_cases"));
-        //$langs = array_filter($langs, fn($v) => str_ends_with($v,'json'));
-        //$langs = array_map(fn($v) => Str::before($v,'.'), $langs);
-        //
-        ////df(tmr(@$this->start), $langs);
-        //$parser = new TestCasesParser();
-        //
-        //foreach ($langs as $lang){
-        //    $testCasesJsonPath = base_path("_backups/codewars_data/parsed_test_cases/$lang.json");
-        //    $existed_cases = json_decode(file_get_contents($testCasesJsonPath), 1);
-        //    $cases_1_2 = $parser->parseKatasTestsHtml($lang);
-        //    $existed_cases = [...$existed_cases, ...$cases_1_2];
-        //    file_put_contents($testCasesJsonPath, json_encode($existed_cases));
-        //}
-        //
-        //df(tmr(@$this->start), count($existed_cases), @$cases_1_2, @$existed_cases['52dc4688eca89d0f820004c6']);
-        //
-        //
-        //df(tmr(@$this->start), $res);
+
+        //[[1,69,95,70]], [[0,49,40,99]], [[37,61,92,36]], [[51,24,75,57]], [[92,59,88,11]]]
+        //(new SolutionHandler())->replaceSlashedNInSolutionsBody();
+        //df(tmr(@$this->start), 878);
 
 
         $res = (new KataSolver())->solve();
