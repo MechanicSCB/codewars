@@ -12,6 +12,7 @@
         "vite": "^3.0.0"
     },
     "dependencies": {
+        "bignumber.js": "^9.1.1",
         "open": "^8.4.0"
     }
 }

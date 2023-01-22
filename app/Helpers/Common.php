@@ -7,7 +7,7 @@ use Symfony\Component\VarDumper\VarDumper;
 
 function stdToArray($input): array
 {
-    return json_decode(json_encode($input), 1);
+    return json_decode(json_encode($input), 1) ?? [];
 }
 
 function tmr(?float $time = null, $precision = 2): string

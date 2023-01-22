@@ -36,7 +36,7 @@ class KataFilter
             }
             if($status === 'beta'){
                 $katas->doesntHave('random_test');
-                $katas->has('sample');
+                //$katas->has('sample');
             }
         }
 

@@ -20,7 +20,7 @@ class ReverseSeeder
 
     public function run()
     {
-        // TODO change to csv format
+        // TODO change to csv format?
         $tableNames = ['users', 'langs', 'tags', 'katas', 'kata_lang', 'kata_tag', 'samples', 'random_tests'];
 
         foreach ($tableNames as $tableName){

@@ -53,7 +53,11 @@ class SolutionResultsHandler
             $expectedEvalList = json_decode($this->kata->sample['expected_list'] ?? "[]", 1);
         }
 
-        return stdToArray($expectedEvalList);
+        if(is_object($expectedEvalList)){
+            $expectedEvalList = stdToArray($expectedEvalList);
+        }
+
+        return $expectedEvalList;
     }
 
     protected function getSolutionAttemptsResults(array $expectedList, array $solutionEvalList, float $start): array

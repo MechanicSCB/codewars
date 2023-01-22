@@ -176,16 +176,16 @@ class SolutionHandler
         df(tmr(@$this->start), 'checkFunctionNames');
     }
 
-    public function replaceSlashedNInSolutionsBody()
+    public function replaceSlashedNInSolutionsBody($kataId)
     {
         $solutions = Solution::query()
-            ->where('kata_id', '586214e1ef065414220000a8')
+            ->where('kata_id', $kataId)
             //->whereRelation('lang', 'slug', 'coffeescript')
             ->get(['id','body'])
         ;
 
         foreach ($solutions as $solution){
-            $solution->body = str_replace(["\n".'"', "\n"."'"],['\n"','\n'."'"], $solution->body);
+            $solution->body = str_replace(["\n".'"', "\n"."'", "\n`"],['\n"','\n'."'", '\n`'], $solution->body);
             $solution->save();
         }
 

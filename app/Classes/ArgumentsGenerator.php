@@ -66,9 +66,9 @@ class ArgumentsGenerator
             return $this->generateRandomString(@$element['length'], @$element['allowed'], @$element['restricted'], @$element['faker'], @$element['strcase'], @$element['fcase']);
         }
 
-        // WORD
+        // WORD/WORDS
         if ($element['type'] === 'word' || $element['type'] === 'words') {
-            return $this->generateRandomString(@$element['length'], null, null, 'word', @$element['strcase'], @$element['fcase']);
+            return $this->generateRandomString(@$element['length'], null, null, $element['type'], @$element['strcase'], @$element['fcase']);
         }
 
         // SENTENCE

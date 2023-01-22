@@ -22,10 +22,10 @@ class SampleController extends Controller
     // Dev
     public function showTestCases(): View
     {
-        $kataId = '5aaa1aa8fd577723a3000049';
+        $kataId = '5ea6a8502186ab001427809e';
         $langSlug = 'javascript';
         //$langSlug = 'ruby';
-        //$langSlug = 'python';
+        $langSlug = 'python';
         //$langSlug = 'php';
         $testCases = json_decode(file_get_contents(base_path("_backups/codewars_data/parsed_test_cases/$langSlug.json")), 1);
 
