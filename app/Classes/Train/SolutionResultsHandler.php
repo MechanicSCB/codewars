@@ -23,6 +23,7 @@ class SolutionResultsHandler
 
     public function getResults(): array
     {
+        //df(tmr(@$this->start), $this->attempts);
         // get expected list
         $expectedList = $this->getAttemptsExpected();
 
@@ -151,7 +152,6 @@ class SolutionResultsHandler
 
     private function getComparison(mixed $result, mixed $expected): bool
     {
-        //df(tmr(@$this->start), $result, $expected);
         if(is_object($result)){
             $result = stdToArray($result);
         }

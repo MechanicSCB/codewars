@@ -17,6 +17,7 @@ class CrystalScriptGenerator extends LangScriptGenerator
         foreach ($this->attempts as $attempt){
             $attemptString = $this->getAttemptString($attempt);
             $attemptString = str_replace('[]', '[] of Int32',$attemptString);
+            //$attemptString = str_replace('[]', '[] of String',$attemptString);
             $script .= "puts {$attemptString}.to_json\n";
             $script .= "puts \"$this->separator\"\n";
         }
