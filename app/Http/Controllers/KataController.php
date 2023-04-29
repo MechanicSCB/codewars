@@ -134,7 +134,7 @@ class KataController extends Controller
 
     protected function getAllKatasPassedLangs($katas): array
     {
-        //Cache::forget('allKatasPassedLangs');
+        // Cache::forget('allKatasPassedLangs');
         $allKatasPassedLangs = Cache::rememberForever('allKatasPassedLangs', function () {
             return Solution::query()
                 ->whereIn('status', ['sample_passed'])
