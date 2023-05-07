@@ -7,14 +7,6 @@ import Highlight from "../../Components/Highlight.vue";
 defineProps({
     kata: Object,
 });
-
-let lang = 'php';
-function hideOtherLangsCode(html){
-    html = html.replace(/<pre><code class="language-/g,'<pre class="hidden"><code class="language-');
-    html = html.replace('<pre class="hidden"><code class="language-' + lang, '<pre><code class="language-' + lang);
-
-    return html;
-}
 </script>
 
 <template>
@@ -61,7 +53,7 @@ function hideOtherLangsCode(html){
             <x-kata.social :kata="kata" />
         </div>
         <div class="w-full p-5 mb-5 bg-ui-section rounded-lg">
-            <Highlight class="description" :content="hideOtherLangsCode(kata.description)"></Highlight>
+            <Highlight class="description" :content="kata.description"></Highlight>
 
             <KataTags :tags="kata.tags" class="!mt-4"/>
         </div>

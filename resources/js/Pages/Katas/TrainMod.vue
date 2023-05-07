@@ -121,6 +121,14 @@ onMounted(() => {
         indentUnit: 4,
     });
 });
+
+function hideOtherLangsCode(html){
+    html = html.replace(/<pre><code class="language-/g,'<pre class="hidden"><code class="language-');
+    html = html.replace('<pre class="hidden"><code class="language-' + form.lang, '<pre><code class="language-' + form.lang);
+
+    return html;
+}
+
 </script>
 
 <template>
@@ -169,7 +177,7 @@ onMounted(() => {
             <Tabs ref="myTabs">
                 <Tab id="instructions_tab" title="Instructions" name="Instructions" :selected="true">
                     <div class="w-full pt-1 p-5 mb-5 bg-ui-section rounded-lg">
-                        <Highlight class="description" :content="kata.description"></Highlight>
+                        <Highlight class="description" :content="hideOtherLangsCode(kata.description)"></Highlight>
                         <hr class="mt-8">
                         <KataTags :tags="kata.tags" class="!mt-4"/>
                     </div>

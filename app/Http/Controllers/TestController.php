@@ -15,8 +15,8 @@ class TestController extends Controller
     {
         //(new SolutionHandler())->replaceSlashedNInSolutionsBody('51c8e37cee245da6b40000bd');
 
-        //$res = (new KataSolver())->solve();
-        //
+        (new KataSolver())->solve();
+
         //df(tmr(@$this->start), $res);
 
 

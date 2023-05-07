@@ -12,27 +12,32 @@ class KataSolver
 {
     public function solve()
     {
-        $inputs = [[".W.\n.W.\n..."], ["......\n......\n......\n......\n......\n......"], ["......\n......\n......\n......\n.....W\n....W."], [".W...W...W...\n.W.W.W.W.W.W.\n.W.W.W.W.W.W.\n.W.W.W.W.W.W.\n.W.W.W.W.W.W.\n.W.W.W.W.W.W.\n.W.W.W.W.W.W.\n.W.W.W.W.W.W.\n.W.W.W.W.W.W.\n.W.W.W.W.W.W.\n.W.W.W.W.W.W.\n.W.W.W.W.W.W.\n...W...W...W."], ["."]];
-        $outputs = [4, 10, -1, 96, 0];
-        $n = 0;
+        $inputs = [[["red", "red"]], [["red", "green", "blue"]], [["gray", "black", "purple", "purple", "gray", "black"]], [[]], [["red", "green", "blue", "blue", "red", "green", "red", "red", "red"]]];
+        $outputs = [1, 0, 3, 0, 4];
+        $n = 2;
         $input = $inputs[$n];
 
-        //$input[0] = explode("\n", $input[0]);
-
-        $res = $this->path_finder(...$input);
+        $res = $this->beeramid(1500, 2);
+        $res = $this->beeramid(10, 2);
+        df(tmr(@$this->start), $res);
         df(tmr(@$this->start), $inputs[$n], $outputs[$n], $res);
     }
 
-    function path_finder($maze)
+    function beeramid($money, $price)
     {
-        $maze = explode("\n", $maze);
+        $n = intval($money/$price);
+        $s = 1;
+        $lev = 0;
 
-        foreach ($maze as $key => $row) {
-            $maze[$key] = str_split($row);
+        while($n >= $s**2){
+            $lev++;
+            $n -= $s**2;
+            $s++;
         }
 
-        return (new PathFinder2($maze))->run();
+        return $lev;
     }
+
 
 }
 
