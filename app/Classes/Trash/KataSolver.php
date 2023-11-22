@@ -5,37 +5,33 @@ namespace App\Classes\Trash;
 
 
 use App\Classes\Trash\Katas\PathFinder2;
+use App\Classes\Trash\Katas\Sky_4;
+use App\Classes\Trash\Katas\Sky_6;
 use Illuminate\Support\Str;
 use function Symfony\Component\String\b;
 
 class KataSolver
 {
+
     public function solve()
     {
-        $inputs = [[["red", "red"]], [["red", "green", "blue"]], [["gray", "black", "purple", "purple", "gray", "black"]], [[]], [["red", "green", "blue", "blue", "red", "green", "red", "red", "red"]]];
-        $outputs = [1, 0, 3, 0, 4];
-        $n = 2;
-        $input = $inputs[$n];
+        $res = $this->speed(159, 0.8); // 153.79671564846308
 
-        $res = $this->beeramid(1500, 2);
-        $res = $this->beeramid(10, 2);
-        df(tmr(@$this->start), $res);
-        df(tmr(@$this->start), $inputs[$n], $outputs[$n], $res);
+        dd(tmr(), $res);
     }
 
-    function beeramid($money, $price)
+    function speed($d, $mu)
     {
-        $n = intval($money/$price);
-        $s = 1;
-        $lev = 0;
+        $mug = $mu * 9.81;
 
-        while($n >= $s**2){
-            $lev++;
-            $n -= $s**2;
-            $s++;
-        }
+        return 3.6*(-2*$mug + sqrt(4*($mug**2) + 8*$mug*$d))/2;
+    }
 
-        return $lev;
+    function dist($v, $mu)
+    {
+        $v /= 3.6;
+
+        return ($v * $v) / (2 * $mu * 9.81) + $v;
     }
 
 
